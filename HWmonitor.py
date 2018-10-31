@@ -8,7 +8,7 @@ def main():
         raw_data, addr = conn.recvfrom(65565)
 
         dest_mac, src_mac, eth_proto, data = ethernet_frame(raw_data)
-        print(f'\nParanormal Activity: \nGhosts are carrying packets from: {dest_mac} to: {src_mac}, Zombie reports Protocol: {eth_proto}')
+        print(f'\nMonitoring Paranormal Activity: \nGhosts are carrying packets from: {dest_mac} to: {src_mac}, Zombie reports Protocol: {eth_proto}')
 
         # 8 for IPv4
         if eth_proto == 8:
@@ -24,14 +24,14 @@ def main():
             # TCP
             elif proto == 6:
                 (src_port, dest_port, sequence, acknowledgement, flag_urg, flag_ack, flag_psh, flag_rst, flag_syn, flag_fin, data) = tcp_segment(data)
-                print(f'Receiving Skeletons:\nForeign skeletons are marching with data to port: {src_port}, from port: {dest_port}, Sequence: {sequence}, Acknowledgement: {acknowledgement}')
+                print(f'Receiving Skeletons:\nSkeletons are marching with data to port: {src_port}, from port: {dest_port}, Sequence: {sequence}, Acknowledgement: {acknowledgement}')
                 print(f'Flags:\nURG: {flag_urg}, ACK: {flag_ack}, PSH: {flag_psh}, RST: {flag_rst}, SYN: {flag_syn}, FIN: {flag_fin}')
                 print(f'Data:\n{data}')
 
             # UDP
             elif proto == 17:
                 src_port, dest_port, length, data = udp_segment(data)
-                print(f'Sending ombies:\nYour zombies are marching with data from port: {src_port}, to port: {dest_port}, Length: {length}')
+                print(f'Sending Zombies:\nYour zombies are marching with data from port: {src_port}, to port: {dest_port}, Length: {length}')
                 print(f'Data:\n{data}')
 
             # Other
