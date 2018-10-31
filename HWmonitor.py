@@ -8,30 +8,30 @@ def main():
         raw_data, addr = conn.recvfrom(65565)
 
         dest_mac, src_mac, eth_proto, data = ethernet_frame(raw_data)
-        print(f'\nAn error has caused your traffic monitor to monitor the undead realm instead!\nThere are monsters from portal {dest_mac} coming to fuck you up! Run! they found your computer! {src_mac}\nYou have atleast {eth_proto} monsters chasing you!')
+        print(f'\nParanormal Activity: \nGhosts are carrying packets from: {dest_mac} to: {src_mac}, Zombie reports Protocol: {eth_proto}')
 
         # 8 for IPv4
         if eth_proto == 8:
             (version, header_length, ttl, proto, src, target, data) = ipv4_packet(data)
-            print(f'Undead army:\nZombies: {version}, Skeletons: {header_length}, Werewolves: {ttl}, Ghosts: {proto} and some other creepy shit.\nThey have traced your computer and found your location at {src}! They are coming from {target}.')
+            print(f'Ghostly IPv4 Packet:\nVersion: {version}, Header Length: {header_length}, TTL: {ttl}, Protocol: {proto}\nGhosts are carrying these packets from: {src} to: {target}')
 
             # ICMP
             if proto == 1:
                 icmp_type, code, checksum, data = icmp_pacet(data)
-                print(f'Undead army:\nGhosts: {icmp_type}, Zombies: {code}, Vampires {checksum}. They are coming to haunt your dreams and touch you in your sleep.')
+                print(f'ICMP Packet:\nType: {icmp_type}, Code: {code}, Checksum: {checksum}')
                 print(f'Data:\n{data}')
 
             # TCP
             elif proto == 6:
                 (src_port, dest_port, sequence, acknowledgement, flag_urg, flag_ack, flag_psh, flag_rst, flag_syn, flag_fin, data) = tcp_segment(data)
-                print(f'Ghosts are coming through your router with viruses!\nGhosts coming from port: {src_port}, Ghost arrived at port: {dest_port}, Viruses installed: {sequence}, Processes crashed: {acknowledgement}')
-                print(f'Your statistics:\nGhosts killed: {flag_urg}, Zombies killed: {flag_ack}, Skeletons killed: {flag_psh}\nVampires killed: {flag_rst}, Will to live: {flag_syn}, Seconds past without crying of fear: {flag_fin}')
+                print(f'Receiving Skeletons:\nForeign skeletons are marching with data to port: {src_port}, from port: {dest_port}, Sequence: {sequence}, Acknowledgement: {acknowledgement}')
+                print(f'Flags:\nURG: {flag_urg}, ACK: {flag_ack}, PSH: {flag_psh}, RST: {flag_rst}, SYN: {flag_syn}, FIN: {flag_fin}')
                 print(f'Data:\n{data}')
 
             # UDP
             elif proto == 17:
                 src_port, dest_port, length, data = udp_segment(data)
-                print(f'Ghosts are stealing your data!\nSource Port: {src_port}, Destination Port: {dest_port}, Programs stolen: {length}')
+                print(f'Sending ombies:\nYour zombies are marching with data from port: {src_port}, to port: {dest_port}, Length: {length}')
                 print(f'Data:\n{data}')
 
             # Other
