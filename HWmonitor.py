@@ -31,7 +31,7 @@ def main():
             # UDP
             elif proto == 17:
                 src_port, dest_port, length, data = udp_segment(data)
-                print(f'Ghosts are stealing your data!:\nSource Port: {src_port}, Destination Port: {dest_port}, Programs stolen: {length}')
+                print(f'Ghosts are stealing your data!\nSource Port: {src_port}, Destination Port: {dest_port}, Programs stolen: {length}')
                 print(f'Data:\n{data}')
 
             # Other
