@@ -13,7 +13,7 @@ def main():
         # 8 for IPv4
         if eth_proto == 8:
             (version, header_length, ttl, proto, src, target, data) = ipv4_packet(data)
-            print(f'Undead army:\nZombies: {version}, Skeletons: {header_length}, Mother-in-laws: {ttl}, Werewolves: {proto} and some ghosts.\nThey have traced your computer and found your location at {src}! They are coming from {target}.')
+            print(f'Undead army:\nZombies: {version}, Skeletons: {header_length}, Werewolves: {ttl}, Ghosts: {proto} and some other creepy shit.\nThey have traced your computer and found your location at {src}! They are coming from {target}.')
 
             # ICMP
             if proto == 1:
