@@ -1,3 +1,2 @@
 # TrafficMonitor
-Work in progress...
 An OpenVPN traffic monitor that monitors traffic for an OpenVPN.
