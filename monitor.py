@@ -27,7 +27,7 @@ def main():
 
             # ICMP
             if proto == 1:
-                icmp_type, code, checksum, data = icmp_pacet(data)
+                icmp_type, code, checksum, data = icmp_packet(data)
                 print(f'ICMP Packet:\nType: {icmp_type}, Code: {code}, Checksum: {checksum}')
                 print(f'Data:\n{data}')
 
